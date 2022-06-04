@@ -41,3 +41,16 @@ jobs:
         with:
           name: apiapp
           path: api/bin/published
+
+  release: 
+    name: 'Relase app'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifacts@v2
+      with:
+        name: apiapp
+        path: artifacts/api
+    
