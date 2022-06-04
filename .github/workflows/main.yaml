@@ -53,4 +53,21 @@ jobs:
       with:
         name: apiapp
         path: artifacts/api
+
+    - name: Zip artifact
+      shell: bash
+      run: |
+        pushd artifacts/api
+        zip -qq -r apiapp.zip .
+        popd
+
+        mv artifacts/api/apiapp.zip artifacts/apiapp.zip
     
+    - name: Release artifact to Github
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN}}
+        prerelease: false
+        files: |
+          artifacts/apiapp.zip
+          
