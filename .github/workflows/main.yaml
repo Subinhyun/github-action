@@ -1,9 +1,6 @@
-name: 'My First Github Actions'
+name: 'My First GitHub Actions'
 
 on: push
-
-env:
-  PRESET_VALUE: "This is the value preset"
 
 jobs:
   first_job:
@@ -19,8 +16,8 @@ jobs:
 
           echo "::add-mask::$value1"
           echo "::set-output name=first_value::$value1"
-          
-      - name: Check ouput value
+
+      - name: Check output value
         shell: bash
         run: |
-        echo "value: ${{ steps.first.outputs.first_value }}"
+          echo "value: ${{ steps.first.outputs.first_value }}"
